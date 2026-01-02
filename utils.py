@@ -8,7 +8,7 @@ disease_model = tf.keras.models.load_model("trained_model.h5")
 yield_model = joblib.load("yield_model.pkl")
 
 def preprocess_image(image):
-    img = cv2.resize(image, (224, 224))
+    img = cv2.resize(image, (128, 128))
     img = img / 255.0
     return np.expand_dims(img, axis=0)
 
