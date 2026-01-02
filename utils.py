@@ -12,10 +12,26 @@ def preprocess_image(image):
     img = img / 255.0
     return np.expand_dims(img, axis=0)
 
+classes = [
+    "Healthy",
+    "Red Rot",
+    "Smut",
+    "Mosaic Virus",
+    "Leaf Scald",
+    "Top Shoot Borer",
+    "Gumming",
+    "Grassy Shoot",
+    "Ratoon Stunting",
+    "Yellow Leaf",
+    "Other Disease"
+]
+
 def predict_disease(image):
     img = preprocess_image(image)
     pred = disease_model.predict(img)
-    return np.argmax(pred)
+    class_index = np.argmax(pred)
+    return classes[class_index]  # Return disease name instead of number
+
 
 def predict_yield(data):
     return yield_model.predict([data])[0]
