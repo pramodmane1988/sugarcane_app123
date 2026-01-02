@@ -4,7 +4,7 @@ import tensorflow as tf
 import joblib
 
 # Load models
-disease_model = tf.keras.models.load_model("sugarcane_disease_model.h5")
+disease_model = tf.keras.models.load_model("trained_model.h5")
 yield_model = joblib.load("yield_model.pkl")
 
 def preprocess_image(image):
